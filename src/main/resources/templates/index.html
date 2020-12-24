@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>首页面</h1>
+    <div th:each="goods:${goodsList}">
+        <a th:href="@{|/goodsInfo?id=${goods.id}|}">
+            <img th:src="@{|/${goods.getImageUrl()}|}"><br>
+            <span th:text="${goods.getNameDesc()}"></span><br>
+            <span th:text="${goods.getPrice()}"></span><br>
+            <span th:text="${goods.getName()}"></span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <!--+${goods.id}中的加号是js的拼接-->
+            <input type="button" value="立即抢购" th:onclick="|window.location.href='/goodsInfo?id='+${goods.id}|">
+        </a>
+
+    </div>
+<script>
+
+</script>
+</body>
+</html>
